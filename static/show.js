@@ -1,11 +1,5 @@
 define(function (require, exports) {
     function show(as, divs) {
-        var isRefresh = true;
-        window.onhashchange = function () {
-            if(isRefresh){
-                window.location.reload();
-            }
-        }
         var firstHash = window.location.hash.substring(1) || 'index'
 
         for (var j = 0; j < divs.length; j++) {

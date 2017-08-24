@@ -2,7 +2,7 @@ define(function (require, exports) {
     function hide(as, divs) {
         for (var i = 0; i < as.length; i++) {
             as[i].addEventListener('click', function () {
-                isRefresh = false
+                 window.isRefresh = false
                 var hash = this.dataset.hash
                 // window.location.hash = hash;
                 var wHash = window.location.hash.substring(1) || 'index';
