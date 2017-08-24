@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            width: 70px;
+        }
+
+        div {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="javascript:;" data-hash="index">首页</a></li>
+        <li><a href="javascript:;" data-hash="student">学员</a></li>
+        <li><a href="javascript:;" data-hash="message">消息</a></li>
+    </ul>
+    <div data-hash="index">首页</div>
+    <div data-hash="student">学员</div>
+    <div data-hash="message">消息</div>
+    <script>
+        var as = document.querySelectorAll('a');
+        var divs = document.querySelectorAll('div');
+        var len = as.length;
+
+
+        for (var i = 0; i < len; i++) {
+            as[i].onclick = function () {
+                var hash = this.dataset.hash;
+                window.location.hash = hash;
+                for (var j = 0; j < len; j++) {
+                    if (divs[j].dataset.hash == hash) {
+                        divs[j].style.display = 'block';
+                    } else {
+                        divs[j].style.display = 'none';
+                    }
+                }
+            }
+        }
+        window.onhashchange = function () {
+            window.location.reload();
+        }
+        var firstHash = window.location.hash.substring(1)|| 'index';
+
+        for (var i = 0; i < len; i++) {
+            if (divs[i].dataset.hash == firstHash) {
+                divs[i].style.display = "block";
+            } else {
+                divs[i].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
